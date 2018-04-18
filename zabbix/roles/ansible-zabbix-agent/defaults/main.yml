@@ -9,8 +9,9 @@ zabbix_agent_packages:
   - zabbix-get
 
 zabbix_agent_package_state: present
-zabbix_agent_server: "{{ groups[zabbix-server][0] }}"
-zabbix_agent_serveractive: "{{ groups[zabbix-server][0] }}"
+zabbix_server_group: zabbix-server
+zabbix_agent_server: "{{ groups[zabbix_server_group][0] }}"
+zabbix_agent_serveractive: "{{ groups[zabbix_server_group][0] }}"
 zabbix_selinux: False
 
 zabbix_repo_yum:
@@ -31,8 +32,8 @@ zabbix_repo_yum:
 zabbix_url: "http://zabbix.example.com"
 zabbix_api_user: root
 zabbix_api_pass: zabbix-server
-zabbix_api_create_hostgroup: True
-zabbix_api_create_hosts: True
+zabbix_api_create_hostgroup: False
+zabbix_api_create_hosts: False
 zabbix_create_hostgroup: present  # or absent
 zabbix_create_host: present       # or absent
 zabbix_host_status: enabled       # or disabled
